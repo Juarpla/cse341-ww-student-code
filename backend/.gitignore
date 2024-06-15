@@ -1,0 +1,49 @@
+# Archivos y carpetas generados por Visual Studio Code
+.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Archivos de configuración local
+.env
+.env.*
+
+# Archivos de depuración de Node.js
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos de sistema operativo
+.DS_Store
+Thumbs.db
+
+# Directorio de módulos instalados
+node_modules/
+
+# Directorio de distribución
+dist/
+build/
+
+# Archivos de caché
+.eslintcache
+.cache/
+
+# Archivos de pruebas
+coverage/
+*.lcov
+
+# Archivos de bloqueo
+package-lock.json
+yarn.lock
+
+# Archivos de configuración local
+.env
+.env.*
+
+# Archivos de sistema operativo
+.DS_Store
+Thumbs.db
