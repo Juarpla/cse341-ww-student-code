@@ -6,7 +6,7 @@ const professionalController = require("../controllers/professionalController");
 
 router.get(
     "/",
-    professionalController.getProJSON
+    professionalController.getProfessional
 );
 
 module.exports = router;

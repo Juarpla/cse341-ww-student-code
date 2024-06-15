@@ -1,22 +1,31 @@
 const { MongoClient } = require("mongodb");
+require("dotenv").config();
 
-const runMongo = async () => {
-    const mongoUri = process.env.DATABASE_URL;
+let _db;
 
-    const client = new MongoClient(mongoUri);
+const initDb = (callback) => {
+  if (_db) {
+    console.log("Db is already initialized!");
+    return callback(null, _db);
+  }
+  MongoClient.connect(process.env.DATABASE_URL)
+    .then((client) => {
+      _db = client;
+      callback(null, _db);
+    })
+    .catch((err) => {
+      callback(err);
+    });
+};
 
-    try {
-        await client.connect();
-        //for queries
-        await client.db("admin").command({ ping: 1 });
-        console.log(
-          "Pinged your deployment. You successfully connected to MongoDB!"
-        );
-    } catch (error) {
-        console.error(error);   
-    } finally {
-        await client.close();
-    }
-}
+const getDb = () => {
+  if (!_db) {
+    throw Error("Db not initialized");
+  }
+  return _db;
+};
 
-module.exports = runMongo;
+module.exports = {
+  initDb,
+  getDb,
+};
